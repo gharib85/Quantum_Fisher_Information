@@ -358,6 +358,7 @@ inline bool Phase::noise_outcome(const double phi, const double PHI, const int N
     const double oper_n0 = gaussian_rng->next_rand(0.0, DEV_N);//n_x
     const double oper_n2 = gaussian_rng->next_rand(0.0, DEV_N);//n_z
     const double oper_n1 = sqrt(1.0 - (oper_n0 * oper_n0 + oper_n2 * oper_n2));
+	//Array given below contains operators
     const dcmplx U00(sin_theta * oper_n1, -oper_n0 * sin_theta);
     const dcmplx U01(cos_theta, oper_n2 * sin_theta);
     const dcmplx U10(cos_theta, -oper_n2 * sin_theta);
