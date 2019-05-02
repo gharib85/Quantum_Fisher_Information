@@ -1,2 +1,2 @@
 # Adaptive-Quantum-Enhanced-Metrology
-The Research Project uses Reinforcement Learning to optimize quantum phase estimation. Specifically, the project looks at variable beam-splitter reflectivity in a Mach-Zehnder interferometer
+The Research Project uses Reinforcement Learning to find optimal policies for variable beam-splitter reflectivity estimation in a Mach-Zehnder interferometer
