@@ -160,10 +160,6 @@ The intention of this project is to create a library that can be used for solvin
 
 Readers are assumed to be familiar with population-based optimization algorithm, C++, object-oriented programming, class hierarchy and inheritance, and polymorphism.
 
-### Program structure
-
-![Diagram of program](Phase_Est_diagram2.png)
-
 #### User-specified components
 
 The orange boxes correspond to the components in which the users specifies before the compiling the program. `Phase` class contains the modules for the adaptive phase estimation problem, which can be replaced with other problems. To select a problem of choice, replace `Phase()` by the constructor of the class in `main()` in the following line.
