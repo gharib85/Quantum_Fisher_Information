@@ -67,7 +67,7 @@ The program is designed to work on HPC clusters and it requires MPI to run. The 
     $ [mpirun -np NPROC] phase_estimation [config_file]
 
 
-## Input and configuration
+### Input and configuration
 
 Arguments:
 
@@ -120,7 +120,7 @@ The meaning of the individual parameters:
   - `t_goal`: parameter corresponding to the error which the algorithm will accept to solution
 
 
-## Output
+### Output
 
 The program output two files, one containing the policy and fitness value (output.dat) and the other containing the CPU time used in finding the policy (time.dat). The numbers are updated for every _N_ and can be used to track the progress of the optimization.
 
@@ -160,7 +160,7 @@ The intention of this project is to create a library that can be used for solvin
 
 Readers are assumed to be familiar with population-based optimization algorithm, C++, object-oriented programming, class hierarchy and inheritance, and polymorphism.
 
-#### User-specified components
+### User-specified components
 
 The orange boxes correspond to the components in which the users specifies before the compiling the program. `Phase` class contains the modules for the adaptive phase estimation problem, which can be replaced with other problems. To select a problem of choice, replace `Phase()` by the constructor of the class in `main()` in the following line.
 ```
@@ -169,7 +169,7 @@ problem = new Phase(numvar, gaussian_rng, uniform_rng);
 
 The Phase class is accessed through the `Problem` class. The pointer is given to the `OptAlg` class to be used for computing the fitness values and accept-reject criteria.
 
-#### Optimization algorithms
+### Optimization algorithms
 
 The choice of optimization algorithm is specified in the configuration file along with other parameters shown as an orange oval in figure. Otherwise, it can also be coded in `main()` in the following line if necessary.
 
@@ -177,7 +177,7 @@ The choice of optimization algorithm is specified in the configuration file alon
 opt = new DE(problem, gaussian_rng, pop_size);
 ```
 
-#### MPI
+### MPI
 
 The MPI library is required for the program to run, as the program is designed to spread the solution candidate evenly on a group of processors. The processors communicates in the following situations.
 
