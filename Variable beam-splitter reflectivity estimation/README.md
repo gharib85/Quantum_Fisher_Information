@@ -1,6 +1,6 @@
 # Evolutionary algorithm for adaptive variable beam-splitter reflectivity estimation
 
-We implement evolutionary algorithm to the problem of adaptive phase estimation, which is an example of quantum control problems. The aim of this project is to create a library containing modules that streamlines the construction of an optimization algorithm for quantum control problems. Access to modules of optimization algorithms provides the building blocks that users can use to tweak the algorithm to their needs.
+We implement evolutionary algorithm to the problem of adaptive variable beam-splitter reflectivity estimation, which is an example of quantum control problems. The aim of this project is to create a library containing modules that streamlines the construction of an optimization algorithm for quantum control problems. Access to modules of optimization algorithms provides the building blocks that users can use to tweak the algorithm to their needs.
 
 Features:
 
@@ -122,7 +122,7 @@ The meaning of the individual parameters:
 
 ### Output
 
-The program output two files, one containing the policy and fitness value (output.dat) and the other containing the CPU time used in finding the policy (time.dat). The numbers are updated for every _N_ and can be used to track the progress of the optimization.
+The program outputs two files, one containing the policy and fitness value (output.dat) and the other containing the CPU time used in finding the policy (time.dat). The numbers are updated for every _N_ and can be used to track the progress of the optimization.
 
 Example of output:
 
@@ -156,13 +156,13 @@ time.dat
 
 ## Expanding the library
 
-The intention of this project is to create a library that can be used for solving multiple quantum control problems. The code is therefore designed to ease the process of including new problems and algorithms and make the selection of problems and algorithm as error-free as possible. The following document is a guide on how users can write and include their own problems and optimization algorithms to the existing library, and what is needed to customize and compile the code.
+The intention of this project is to create a library that can be used for solving multiple quantum control problems. The code is therefore designed to ease the process of including new problems and algorithms and make the selection of problems and algorithms as error-free as possible. The following document is a guide on how users can write and include their own problems and optimization algorithms to the existing library, and what is needed to customize and compile the code.
 
 Readers are assumed to be familiar with population-based optimization algorithm, C++, object-oriented programming, class hierarchy and inheritance, and polymorphism.
 
 ### User-specified components
 
-The orange boxes correspond to the components in which the users specifies before the compiling the program. `Phase` class contains the modules for the adaptive phase estimation problem, which can be replaced with other problems. To select a problem of choice, replace `Phase()` by the constructor of the class in `main()` in the following line.
+The orange boxes correspond to the components in which the users specify before compiling the program. `Phase` class contains the modules for the adaptive variable beam-splitter reflectivity estimation problem, which can be replaced with other problems. To select a problem of choice, replace `Phase()` by the constructor of the class in `main()` in the following line.
 ```
 problem = new Phase(numvar, gaussian_rng, uniform_rng);
 ```
@@ -171,7 +171,7 @@ The Phase class is accessed through the `Problem` class. The pointer is given to
 
 ### Optimization algorithms
 
-The choice of optimization algorithm is specified in the configuration file along with other parameters shown as an orange oval in figure. Otherwise, it can also be coded in `main()` in the following line if necessary.
+The choice of optimization algorithm is specified in the configuration file. Otherwise, it can also be coded in `main()` in the following line if necessary.
 
 ```
 opt = new DE(problem, gaussian_rng, pop_size);
@@ -179,15 +179,15 @@ opt = new DE(problem, gaussian_rng, pop_size);
 
 ### MPI
 
-The MPI library is required for the program to run, as the program is designed to spread the solution candidate evenly on a group of processors. The processors communicates in the following situations.
+The MPI library is required for the program to run, as the program is designed to spread the solution candidate evenly on a group of processors. The processors communicate in the following situations.
 
-* Constructing new set of candidates from existing population
+* Constructing a new set of candidates from existing population
 * Finding the best candidate in the population or subset of the population
-* Selecting the best candidate as solution
+* Selecting the best candidate as a solution
 
 ### Add a new problem
 
-A new problem should be written as a class derived from `Problem` class. There are five functions that user must include in the new problem.
+A new problem should be written as a class derived from `Problem` class. There are five functions that the users must include in the new problem.
 
 * `fitness()` is a function intended to be a wrapper for changing conditions in which the fitness function is evaluated.
 * `avg_fitness()` is the function for calculating the fitness value.
@@ -199,7 +199,7 @@ This class does not use any MPI functionalities.
 
 ### Add new algorithm
 
-New algorithms can be added to the library of optimization algorithms by creating a derived class from the `OptAlg` class. The functions are designed based on swarm intelligence algorithms and evolutionary algorithms which shares the same backbone functions for initializing the population, for selecting the final solution candidate, and so forth. Aspects that are specific to the algorithm, such as how the new candidates are generated and selected, are declared as virtual function in `OptAlg` to allow the functions to be called from the derived class.
+New algorithms can be added to the library of optimization algorithms by creating a derived class from the `OptAlg` class. The functions are designed based on swarm intelligence algorithms and evolutionary algorithms which share the same backbone functions for initializing the population, for selecting the final solution candidate, and so forth. Aspects that are specific to the algorithm, such as how the new candidates are generated and selected, are declared as virtual function in `OptAlg` to allow the functions to be called from the derived class.
 
 The functions, including virtual functions, are listed in OptAlg class document.
 
@@ -217,7 +217,7 @@ The library provides the module for users to contract the optimization algorithm
 
 Most of these functionalities are in `OptAlg` class.
 
-For adaptive phase estimation, the program runs many consecutive optimization problems with different number of variables _N_ and the accept-reject criteria changes for different sets of _N_, which is possible by changing conditions given to the optimization algorithm in `main()`. 
+For adaptive variable beam-splitter estimation, the program runs many consecutive optimization problems with different number of variables _N_ and the accept-reject criteria changes for different sets of _N_, which is possible by changing conditions given to the optimization algorithm in `main()`. 
 
 ### Changing the compilation setting
 
