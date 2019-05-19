@@ -1,2 +1,2 @@
-# Adaptive-Quantum-Enhanced-Metrology
+# Quantum Fisher Information
 The Research Project uses Reinforcement Learning to find optimal policies for variable beam-splitter reflectivity estimation in a Mach-Zehnder interferometer
